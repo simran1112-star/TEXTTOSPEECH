@@ -39,6 +39,15 @@ textarea {
     display: none;
 }
 
+#displayOptionSection {
+    display: none;
+    margin-top: 20px;
+}
+
+#textInputSection {
+    margin-top: 20px;
+}
+
 button[type="submit"] {
     background-color: #4CAF50;
     color: white;
@@ -46,8 +55,10 @@ button[type="submit"] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 button[type="submit"]:hover {
     background-color: #45a049;
 }
+
