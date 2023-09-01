@@ -3,15 +3,28 @@ from bs4 import BeautifulSoup
 import boto3
 import os
 import requests
-from langdetect import detect
+import langid
 from indic_transliteration import sanscript
 from indic_transliteration.sanscript import transliterate
+
 app = Flask(__name__)
 
+def extract_main_content(soup):
+    main_content = (
+        soup.find(class_='main-content')
+        or soup.find(id='main-content')
+        or soup.find('article')
+        or soup.find('section')
+        or soup.find('main')
+    )
+    return main_content.get_text() if main_content else ''
 
-def convert_to_devanagari(text, source_script):
-    devanagari_text = transliterate(text, source_script, sanscript.DEVANAGARI)
-    return devanagari_text
+def convert_to_devanagari(text, source_lang):
+    try:
+        devanagari_text = transliterate(text, source_lang, sanscript.DEVANAGARI)
+        return devanagari_text
+    except KeyError:
+        return text
 
 def convert_gurmukhi_to_devanagari(text):
     return convert_to_devanagari(text, 'gurmukhi')
@@ -21,6 +34,9 @@ def convert_gujarati_to_devanagari(text):
 
 def convert_bengali_to_devanagari(text):
     return convert_to_devanagari(text, 'bengali')
+
+def convert_tamil_to_devanagari(text):
+    return convert_to_devanagari(text, 'tamil')
 
 def aws_polly_text_to_speech(text):
     aws_mag_con = boto3.session.Session(profile_name='test_user')
@@ -70,7 +86,9 @@ def home():
 @app.route('/submit', methods=['POST'])
 def submit():
     input_option = request.form.get('inputOption')
-
+    display_option = request.form.get('displayOption')
+    detected_lang = 'unknown' 
+    
     if input_option == 'url':
         url_input = request.form.get('urlInput')
         try:
@@ -80,39 +98,58 @@ def submit():
             soup = BeautifulSoup(html_content, 'html.parser')
             extracted_text = soup.get_text()
 
-            detected_lang = detect(extracted_text)
-
-            if detected_lang == 'bn':  
-                devanagari_text = convert_bengali_to_devanagari(extracted_text)
-            elif detected_lang == 'pa':  
-                devanagari_text = convert_gurmukhi_to_devanagari(extracted_text)
-            elif detected_lang == 'gu':  
-                devanagari_text = convert_gujarati_to_devanagari(extracted_text)
+            if display_option == 'main':
+                main_content = extract_main_content(soup)
+                detected_lang, _ = langid.classify(main_content)
+                content_to_convert = main_content
+            elif display_option == 'full':
+                detected_lang, _ = langid.classify(extracted_text)
+                print("hello")
+                content_to_convert = extracted_text
             else:
-                devanagari_text = extracted_text
-            
-            aws_polly_text_to_speech(devanagari_text)
-            return f"<h2>Conversion Result</h2><p>Text extracted from URL: {devanagari_text}</p>"
+                return "Invalid display option selected"
+
+            if detected_lang in {'bn', 'pa', 'gu','ta'}:
+                if detected_lang == 'bn':  
+                    devanagari_text = convert_bengali_to_devanagari(content_to_convert)
+                elif detected_lang == 'pa':  
+                    devanagari_text = convert_gurmukhi_to_devanagari(content_to_convert)
+                elif detected_lang == 'gu':  
+                    devanagari_text = convert_gujarati_to_devanagari(content_to_convert)
+                elif detected_lang == 'ta':
+                    devanagari_text = convert_tamil_to_devanagari(content_to_convert)
+                
+                aws_polly_text_to_speech(devanagari_text)
+                return f"<h2>Conversion Result</h2><p>Text extracted from URL: {devanagari_text}</p>"
+
+            else:
+                aws_polly_text_to_speech(content_to_convert)
+                return f"<h2>Conversion Result</h2><p>Text extracted from URL: {content_to_convert}</p>"
 
         except requests.exceptions.RequestException as e:
             return f"<h2>Error</h2><p>Failed to fetch URL: {e}</p>"
 
-    elif input_option == 'text':  
+        except LangDetectException:
+            detected_lang = 'unknown'
+
+    elif input_option == 'text':
         text_input = request.form.get('textInput')
-
-        detected_lang = detect(text_input)
-
+        detected_lang, _ = langid.classify(text_input)
+        devanagari_text = ""
+ 
         if detected_lang == 'bn':  
             devanagari_text = convert_bengali_to_devanagari(text_input)
         elif detected_lang == 'pa':  
             devanagari_text = convert_gurmukhi_to_devanagari(text_input)
         elif detected_lang == 'gu': 
             devanagari_text = convert_gujarati_to_devanagari(text_input)
-        else:
-            devanagari_text = text_input
+        elif detected_lang == 'ta':
+                    devanagari_text = convert_tamil_to_devanagari(text_input)
+    else:
+        devanagari_text = text_input
 
-        aws_polly_text_to_speech(devanagari_text)
-        return f"<h2>Conversion Result</h2><p>Text input: {devanagari_text}</p>"
+    aws_polly_text_to_speech(devanagari_text)
+    return f"<h2>Conversion Result</h2><p>Text input: {devanagari_text}</p>"
 
 if __name__ == '__main__':
     app.run(debug=True)
