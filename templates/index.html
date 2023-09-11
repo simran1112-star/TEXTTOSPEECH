@@ -3,12 +3,33 @@
 <head>
     <title>Text-to-Speech Conversion</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 <body>
-    <h1>Text-to-Speech Conversion</h1>
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Text-to-Speech Conversion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="greeting">
+            <p><strong>Hii!</strong></p>
+        </div>
+        <div class="welcome-message">
+            <p><strong>Welcome to my Text to Speech Conversion Tool</strong></p>
+        </div>
+    </div>
+
+    <h1>Text to Speech</h1>
+
+    <div class="question">
+        <p><strong>What would you like to convert?</strong></p>
+    </div>
     <form action="/submit" method="post">
         <div class="option">
-            <input type="radio" id="urlOption" name="inputOption" value="url">
+            <input type="radio" id="urlOption" name="inputOption" value="url" checked>
             <label for="urlOption">Convert URL</label>
         </div>
         <div class="option">
@@ -32,7 +53,7 @@
             </div>
         </div>
 
-        <div id="textInputSection">
+        <div id="textInputSection" style="display: none;">
             <label for="textInput">Enter Text:</label>
             <textarea id="textInput" name="textInput" rows="4" cols="50"></textarea>
         </div>
@@ -42,38 +63,6 @@
 
     <iframe id="webpage-frame" src="" frameborder="0" width="100%" height="600" style="display: none;"></iframe>
 
-    <script>
-        const urlOption = document.getElementById("urlOption");
-        const textOption = document.getElementById("textOption");
-        const urlInputSection = document.getElementById("urlInputSection");
-        const displayOptionSection = document.getElementById("displayOptionSection");
-        const textInputSection = document.getElementById("textInputSection");
-        const webpageContentSelector = document.getElementById("webpage-frame");
-
-        urlOption.addEventListener("click", () => {
-            urlInputSection.style.display = "block";
-            displayOptionSection.style.display = "block"; // Show the display option for URL
-            textInputSection.style.display = "none";
-        });
-
-        textOption.addEventListener("click", () => {
-            urlInputSection.style.display = "none";
-            displayOptionSection.style.display = "none"; // Hide the display option for URL
-            textInputSection.style.display = "block";
-            webpageContentSelector.style.display = "none";
-        });
-
-        function loadWebpage() {
-            const urlInput = document.getElementById("urlInput").value;
-
-            setIframeSource(urlInput);
-            webpageContentSelector.style.display = "block";
-        }
-
-        function setIframeSource(url) {
-            var iframe = document.getElementById("webpage-frame");
-            iframe.src = url;
-        }
-    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
