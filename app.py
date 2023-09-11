@@ -9,11 +9,17 @@ from indic_transliteration.sanscript import transliterate
 
 app = Flask(__name__)
 
+S3_BUCKET_NAME = 'tts-demo3-bucket'
+S3_OBJECT_KEY = 'output_combined.mp3'
+
+# Initialize the S3 client
+s3 = boto3.client('s3')
+
 def extract_main_content(soup):
     main_content = (
         soup.find(class_='main-content')
         or soup.find(id='main-content')
-        or soup.find('article')
+        or soup.find(id='postContent')
         or soup.find('section')
         or soup.find('main')
     )
@@ -75,9 +81,13 @@ def aws_polly_text_to_speech(text):
 
     with open("output_combined.mp3", "wb") as f:
         f.write(combined_audio)
+        
+        s3.upload_file("output_combined.mp3", S3_BUCKET_NAME, S3_OBJECT_KEY)
 
     for filename in audio_chunks:
         os.remove(filename)
+
+# ... (previous code)
 
 @app.route('/')
 def home():
@@ -88,6 +98,9 @@ def submit():
     input_option = request.form.get('inputOption')
     display_option = request.form.get('displayOption')
     detected_lang = 'unknown' 
+
+    # Initialize audio_url as None
+    audio_url = None
     
     if input_option == 'url':
         url_input = request.form.get('urlInput')
@@ -104,52 +117,63 @@ def submit():
                 content_to_convert = main_content
             elif display_option == 'full':
                 detected_lang, _ = langid.classify(extracted_text)
-                print("hello")
                 content_to_convert = extracted_text
             else:
                 return "Invalid display option selected"
 
-            if detected_lang in {'bn', 'pa', 'gu','ta'}:
-                if detected_lang == 'bn':  
+            if detected_lang in {'bn', 'pa', 'gu', 'ta'}:
+                if detected_lang == 'bn':
                     devanagari_text = convert_bengali_to_devanagari(content_to_convert)
-                elif detected_lang == 'pa':  
+                elif detected_lang == 'pa':
                     devanagari_text = convert_gurmukhi_to_devanagari(content_to_convert)
-                elif detected_lang == 'gu':  
+                elif detected_lang == 'gu':
                     devanagari_text = convert_gujarati_to_devanagari(content_to_convert)
                 elif detected_lang == 'ta':
                     devanagari_text = convert_tamil_to_devanagari(content_to_convert)
-                
+
                 aws_polly_text_to_speech(devanagari_text)
-                return f"<h2>Conversion Result</h2><p>Text extracted from URL: {devanagari_text}</p>"
+
+                # Generate the S3 audio file URL
+                audio_url = f"https://{S3_BUCKET_NAME}.s3.amazonaws.com/{S3_OBJECT_KEY}"
+
+                return render_template('result.html', devanagari_text=devanagari_text, audio_url=audio_url)
 
             else:
                 aws_polly_text_to_speech(content_to_convert)
-                return f"<h2>Conversion Result</h2><p>Text extracted from URL: {content_to_convert}</p>"
+
+                # Generate the S3 audio file URL
+                audio_url = f"https://{S3_BUCKET_NAME}.s3.amazonaws.com/{S3_OBJECT_KEY}"
+
+                return render_template('result.html', devanagari_text=content_to_convert, audio_url=audio_url)
 
         except requests.exceptions.RequestException as e:
-            return f"<h2>Error</h2><p>Failed to fetch URL: {e}</p>"
-
-        except LangDetectException:
-            detected_lang = 'unknown'
+            return f"<h2>Error</h2><p>Failed to fetch URL: {e}"
 
     elif input_option == 'text':
         text_input = request.form.get('textInput')
         detected_lang, _ = langid.classify(text_input)
         devanagari_text = ""
- 
-        if detected_lang == 'bn':  
+
+        if detected_lang == 'bn':
             devanagari_text = convert_bengali_to_devanagari(text_input)
-        elif detected_lang == 'pa':  
+        elif detected_lang == 'pa':
             devanagari_text = convert_gurmukhi_to_devanagari(text_input)
-        elif detected_lang == 'gu': 
+        elif detected_lang == 'gu':
             devanagari_text = convert_gujarati_to_devanagari(text_input)
         elif detected_lang == 'ta':
-                    devanagari_text = convert_tamil_to_devanagari(text_input)
-    else:
-        devanagari_text = text_input
+            devanagari_text = convert_tamil_to_devanagari(text_input)
+        else:
+            devanagari_text = text_input
 
-    aws_polly_text_to_speech(devanagari_text)
-    return f"<h2>Conversion Result</h2><p>Text input: {devanagari_text}</p>"
+        aws_polly_text_to_speech(devanagari_text)
+
+        # Generate the S3 audio file URL
+        audio_url = f"https://{S3_BUCKET_NAME}.s3.amazonaws.com/{S3_OBJECT_KEY}"
+
+        return render_template('index.html', devanagari_text=devanagari_text, audio_url=audio_url)
+
+# ... (remaining code)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
