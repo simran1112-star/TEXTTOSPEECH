@@ -1,64 +1,124 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-image: url("project\tts2.jpg"); /* Replace with your image path */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
+/* style.css */
 
-h1 {
-    text-align: center;
-}
-
-form {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.8); /* Add a background color with opacity */
-}
-
-.option {
+/* Styling for the container of greeting messages */
+.welcome-container {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-input[type="url"],
-textarea {
-    flex: 1;
-    padding: 8px;
-    margin-left: 5px;
+/* Styling for the greeting "Hii" */
+.greeting {
+    font-size: 24px;
+    margin-left: 30px; /* Add some space between "Hii" and the welcome message */
+}
+
+/* Styling for the welcome message */
+.welcome-message {
+    font-size: 24px;
+    margin-left: 20px;
+    margin-top: 20px; /* Add some space below the welcome message */
+}
+
+/* Styling for the question */
+.question {
+    font-size: 20px;
+    margin-left: 60px;
+    margin-bottom: 20px;
+}
+
+/* Rest of your existing CSS styles */
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    color: #333;
+    padding: 20px 0;
+    background-color: #9d06f528;
+    margin: 0;
+}
+
+/* Form container styles */
+form {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Option styles */
+.option {
+    margin: 10px 0;
+}
+
+/* Radio button styles */
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Label styles */
+label {
+    font-weight: bold;
+}
+
+/* URL input styles */
+#urlInputSection {
+    display: none;
+}
+
+#urlInput {
+    width: 100%;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-#urlInputSection,#textInputSection {
-    display: none;
-}
-
+/* Display option styles */
 #displayOptionSection {
     display: none;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
+/* Text input styles */
 #textInputSection {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
+#textInput {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Submit button styles */
 button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
+    display: block;
+    margin-top: 20px;
     padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px;
 }
 
 button[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
 }
 
+/* Iframe styles */
+#webpage-frame {
+    display: none;
+    border: none;
+}
