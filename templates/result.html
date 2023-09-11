@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text-to-Speech Result</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    color: #333;
+    padding: 20px 0;
+    background-color: #9d06f528;
+    margin: 0;
+}
+
+/* Result container styles */
+#result-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Conversion result styles */
+#conversion-result {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Audio player styles */
+#audioPlayer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Audio player controls styles */
+audio {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Audio player source styles */
+source {
+    display: block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: underline;
+    font-size: 16px;
+}
+</style>
+</head>
+<body>
+    <h1>Text-to-Speech Result</h1>
+
+    <!-- Result container -->
+    <div class="result-container">
+        <p class="result-title"><strong>Conversion Result:</strong></p>
+        <p class="devanagari-text">{{ devanagari_text }}</p>
+
+        <!-- Audio Player -->
+        <div id="audioPlayer">
+            <p><strong>Audio Player:</strong></p>
+            <audio controls>
+                <source src="{{ audio_url }}" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+</body>
+</html>
