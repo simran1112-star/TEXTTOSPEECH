@@ -1,34 +1,25 @@
-/* style.css */
 
-/* Styling for the container of greeting messages */
 .welcome-container {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
-
-/* Styling for the greeting "Hii" */
 .greeting {
     font-size: 24px;
-    margin-left: 30px; /* Add some space between "Hii" and the welcome message */
+    margin-left: 30px; 
 }
 
-/* Styling for the welcome message */
 .welcome-message {
     font-size: 24px;
     margin-left: 20px;
-    margin-top: 20px; /* Add some space below the welcome message */
+    margin-top: 20px; 
 }
 
-/* Styling for the question */
 .question {
     font-size: 20px;
     margin-left: 60px;
     margin-bottom: 20px;
 }
-
-/* Rest of your existing CSS styles */
-
 
 body {
     font-family: Arial, sans-serif;
@@ -37,16 +28,14 @@ body {
     padding: 0;
 }
 
-/* Header styles */
 h1 {
     text-align: center;
     color: #333;
     padding: 20px 0;
-    background-color: #9d06f528;
+    background-color: #05bdf580;
     margin: 0;
 }
 
-/* Form container styles */
 form {
     max-width: 800px;
     margin: 0 auto;
@@ -56,22 +45,18 @@ form {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Option styles */
 .option {
     margin: 10px 0;
 }
 
-/* Radio button styles */
 input[type="radio"] {
     margin-right: 5px;
 }
 
-/* Label styles */
 label {
     font-weight: bold;
 }
 
-/* URL input styles */
 #urlInputSection {
     display: none;
 }
@@ -83,13 +68,11 @@ label {
     border-radius: 5px;
 }
 
-/* Display option styles */
 #displayOptionSection {
     display: none;
     margin-top: 10px;
 }
 
-/* Text input styles */
 #textInputSection {
     margin-top: 10px;
 }
@@ -101,7 +84,6 @@ label {
     border-radius: 5px;
 }
 
-/* Submit button styles */
 button[type="submit"] {
     display: block;
     margin-top: 20px;
@@ -117,7 +99,6 @@ button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-/* Iframe styles */
 #webpage-frame {
     display: none;
     border: none;
