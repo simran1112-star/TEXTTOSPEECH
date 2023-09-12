@@ -98,22 +98,17 @@ This project relies on the following Python libraries:
 - indic-transliteration: For script conversion.
 - langid: Language detection library.
 
-#documentations for more reference:
-	-Langid:
+##documentations for more reference:
+	--Langid:
 	[https://pypi.org/project/langdetect/](https://pypi.org/project/langid/1.1dev/)
- 
-	-Flask:
+ 	-Flask:
 	[https://flask.palletsprojects.com/en/2.3.x/](https://flask.palletsprojects.com/en/2.3.x/)
- 
 	-Indic-transliteration:
 	[https://indic-transliteration.readthedocs.io/en/latest/](https://indic-transliteration.readthedocs.io/en/latest/)
- 
 	-Boto3:
 	[https://boto3.amazonaws.com/v1/documentation/api/latest/index.html](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
- 
 	-BeautifulSoup:
 	[https://www.crummy.com/software/BeautifulSoup/bs4/doc/](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
- 
 	-Amazon polly services:
 	[https://docs.aws.amazon.com/polly/latest/dg/what-is.html](https://docs.aws.amazon.com/polly/latest/dg/what-is.html)
 
