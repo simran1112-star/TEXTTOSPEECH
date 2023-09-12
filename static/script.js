@@ -1,5 +1,3 @@
-// script.js
-
 const urlOption = document.getElementById("urlOption");
 const textOption = document.getElementById("textOption");
 const urlInputSection = document.getElementById("urlInputSection");
@@ -9,13 +7,13 @@ const webpageContentSelector = document.getElementById("webpage-frame");
 
 urlOption.addEventListener("click", () => {
     urlInputSection.style.display = "block";
-    displayOptionSection.style.display = "block"; // Show the display option for URL
+    displayOptionSection.style.display = "block"; 
     textInputSection.style.display = "none";
 });
 
 textOption.addEventListener("click", () => {
     urlInputSection.style.display = "none";
-    displayOptionSection.style.display = "none"; // Hide the display option for URL
+    displayOptionSection.style.display = "none"; 
     textInputSection.style.display = "block";
     webpageContentSelector.style.display = "none";
 });
