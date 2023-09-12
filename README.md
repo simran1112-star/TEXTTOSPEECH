@@ -128,7 +128,7 @@ We extend our gratitude to the creators of Flask, AWS Polly, Beautiful Soup, Ind
 
 
 ---
-13. **Contact Information:**
+## Contact Information:
    - Simran Arora
    - Email: khushisimranarora@gmail.com
    - GitHub: [simran1112-star](https://github.com/simran1112-star)
