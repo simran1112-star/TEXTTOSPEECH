@@ -23,7 +23,7 @@ To set up and run this project locally, follow these steps:
 1. **Clone the repository:**
 
    ```bash
-   git clone <[repository_url](https://github.com/simran1112-star/TEXTTOSPEECH)>
+   git clone <[TEXTTOSPEECH](https://github.com/simran1112-star/TEXTTOSPEECH)>
    ```
 
 2. **Create a virtual environment (recommended):**
