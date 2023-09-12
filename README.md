@@ -97,20 +97,14 @@ This project relies on the following Python libraries:
 - beautifulsoup4: HTML parsing and web scraping.
 - indic-transliteration: For script conversion.
 - langid: Language detection library.
+## Documentation for More Reference:
 
-##documentations for more reference:
-	--Langid:
-	[https://pypi.org/project/langdetect/](https://pypi.org/project/langid/1.1dev/)
- 	-Flask:
-	[https://flask.palletsprojects.com/en/2.3.x/](https://flask.palletsprojects.com/en/2.3.x/)
-	-Indic-transliteration:
-	[https://indic-transliteration.readthedocs.io/en/latest/](https://indic-transliteration.readthedocs.io/en/latest/)
-	-Boto3:
-	[https://boto3.amazonaws.com/v1/documentation/api/latest/index.html](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
-	-BeautifulSoup:
-	[https://www.crummy.com/software/BeautifulSoup/bs4/doc/](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
-	-Amazon polly services:
-	[https://docs.aws.amazon.com/polly/latest/dg/what-is.html](https://docs.aws.amazon.com/polly/latest/dg/what-is.html)
+- [Langid](https://pypi.org/project/langdetect/): Language detection library.
+- [Flask](https://flask.palletsprojects.com/en/2.3.x/): Web application framework.
+- [Indic-transliteration](https://indic-transliteration.readthedocs.io/en/latest/): Script transliteration library.
+- [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html): AWS SDK for Python.
+- [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/): HTML parsing and web scraping.
+- [Amazon Polly Services](https://docs.aws.amazon.com/polly/latest/dg/what-is.html): AWS Polly text-to-speech documentation.
 
 ## Project Structure
 
