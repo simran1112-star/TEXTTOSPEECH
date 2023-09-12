@@ -12,7 +12,6 @@ app = Flask(__name__)
 S3_BUCKET_NAME = 'tts-demo3-bucket'
 S3_OBJECT_KEY = 'output_combined.mp3'
 
-# Initialize the S3 client
 s3 = boto3.client('s3')
 
 def extract_main_content(soup):
@@ -87,8 +86,6 @@ def aws_polly_text_to_speech(text):
     for filename in audio_chunks:
         os.remove(filename)
 
-# ... (previous code)
-
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -99,7 +96,6 @@ def submit():
     display_option = request.form.get('displayOption')
     detected_lang = 'unknown' 
 
-    # Initialize audio_url as None
     audio_url = None
     
     if input_option == 'url':
@@ -133,7 +129,6 @@ def submit():
 
                 aws_polly_text_to_speech(devanagari_text)
 
-                # Generate the S3 audio file URL
                 audio_url = f"https://{S3_BUCKET_NAME}.s3.amazonaws.com/{S3_OBJECT_KEY}"
 
                 return render_template('result.html', devanagari_text=devanagari_text, audio_url=audio_url)
@@ -141,7 +136,6 @@ def submit():
             else:
                 aws_polly_text_to_speech(content_to_convert)
 
-                # Generate the S3 audio file URL
                 audio_url = f"https://{S3_BUCKET_NAME}.s3.amazonaws.com/{S3_OBJECT_KEY}"
 
                 return render_template('result.html', devanagari_text=content_to_convert, audio_url=audio_url)
@@ -167,13 +161,9 @@ def submit():
 
         aws_polly_text_to_speech(devanagari_text)
 
-        # Generate the S3 audio file URL
         audio_url = f"https://{S3_BUCKET_NAME}.s3.amazonaws.com/{S3_OBJECT_KEY}"
 
-        return render_template('index.html', devanagari_text=devanagari_text, audio_url=audio_url)
-
-# ... (remaining code)
-
+        return render_template('result.html', devanagari_text=devanagari_text, audio_url=audio_url)
 
 if __name__ == '__main__':
     app.run(debug=True)
