@@ -1,0 +1,94 @@
+/* contact.css */
+
+/* Style the entire body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the contact section */
+#contact {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the form inputs */
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Style the submit button */
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Style the footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+}
+/* Style the navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #05bdf580;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Add this line to make items equally spread */
+}
+
+.navbar-nav .nav-link {
+    color: black;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.navbar-nav .nav-link:hover {
+    text-decoration: underline;
+}
+
+.navbar-nav .form-inline {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav .form-control {
+    margin-left: 20px;
+}
+
+.navbar-nav .btn {
+    margin-left: 10px;
+}

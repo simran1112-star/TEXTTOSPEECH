@@ -1,0 +1,131 @@
+/* signup.css */
+
+/* Style the entire body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the signup container */
+h1 {
+    text-align: center;
+    color: #333;
+    padding: 20px 0;
+    background-color: #05bdf580;
+    margin: 0;
+}
+
+/* Style the signup form container */
+.signup-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the signup form inputs */
+label {
+    margin-left: 20%;
+    text-align: right;
+    font-weight: bold;
+}
+
+.signup-input {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Style the signup button */
+.signup-button {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.signup-button:hover {
+    background-color: #1e7e34;
+}
+
+/* Style the link for login */
+p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #28a745;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+    .signup-container {
+        max-width: 100%;
+    }
+
+    label {
+        margin-left: 0;
+        text-align: left;
+    }
+}
+
+/* Style the about section */
+#about {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#about h2 {
+    color: #333;
+}
+
+#about p {
+    color: #555;
+}
+
+#about h3 {
+    color: #05bdf5;
+}
+
+#about ul, #about ol {
+    color: #777;
+    margin-left: 20px;
+}
+
+#about li {
+    margin-bottom: 10px;
+}
+
+/* Style the footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #05bdf580;
+    color: white;
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+}

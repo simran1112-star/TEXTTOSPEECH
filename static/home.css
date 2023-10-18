@@ -1,0 +1,49 @@
+/* home.css
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: hsl(170, 70%, 53%);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+/* Add this to center text */
+.center-text {
+    text-align: center;
+    align-items: center;
+    
+}
+home{
+    text-align: left;
+}
+header-image{
+    height: 50px;
+}
+
+
+section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    align-items: left;
+    text-align: left;
+}
+
+section h2 {
+    color: #333;
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+ container-fluid{
+    margin-left: 5px;
+} */
