@@ -1,24 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Text-to-Speech Conversion Tool - Convert text or URLs into speech">
+    <meta name="keywords" content="text-to-speech, TTS, convert text to speech, speech synthesis">
+    <meta name="author" content="Your Name">
+
+    <!-- Add Open Graph meta tags for better sharing on social media -->
+    <meta property="og:title" content="Text-to-Speech Conversion">
+    <meta property="og:description" content="Convert text or URLs into speech with our Text-to-Speech Conversion Tool">
+    <meta property="og:image" content="URL_TO_YOUR_LOGO_IMAGE">
+    <meta property="og:url" content="URL_TO_YOUR_WEBSITE">
+
     <title>Text-to-Speech Conversion</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
-<body>
-    <div class="welcome-container">
-        <div class="greeting">
-            <p><strong>Hii!</strong></p>
-        </div>
-        <div class="welcome-message">
-            <p><strong>Welcome to our Text to Speech Conversion Tool</strong></p>
-        </div>
-    </div>
 
-    <h1>Text to Speech</h1>
+<body>
+
+    <header>
+            <!-- Your header content goes here -->
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('Aboutus') }}">About Us</a>
+    
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('Contact') }}">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('signup') }}">Signup</a>
+                            </li>
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </nav>
+        
+    </header>
+        
+    <h1>Text to Speech converter</h1>
 
     <div class="question">
         <p><strong>What would you like to convert?</strong></p>
-    </div>
+    
     <form action="/submit" method="post">
         <div class="option">
             <input type="radio" id="urlOption" name="inputOption" value="url" checked>
@@ -54,7 +99,14 @@
     </form>
 
     <iframe id="webpage-frame" src="" frameborder="0" width="100%" height="600" style="display: none;"></iframe>
+</div>
+
+    <footer>
+        <!-- Your footer content goes here -->
+        <p>&copy; 2023 Your Website. All rights reserved.</p>
+    </footer>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
+
 </html>
