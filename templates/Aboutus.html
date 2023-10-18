@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn more about our Text-to-Speech Conversion Tool">
+    <title>About Us - Text-to-Speech Conversion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='aboutus.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Add your stylesheets and other head elements here -->
+</head>
+
+<body>
+
+    <header>
+        <header>
+            <!-- Your header content goes here -->
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('Aboutus') }}">About Us</a>
+    
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('Contact') }}">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('signup') }}">Signup</a>
+                            </li>
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </header>
+
+    <section id="aboutus">
+        <h2>About Us</h2>
+        <p>Welcome to Text-to-Speech Conversion, where we strive to make information accessible to everyone through the power of speech.</p>
+
+        <h3>Our Mission</h3>
+        <p>Our mission is to provide a seamless and efficient platform for converting text or URLs into clear and natural-sounding speech. We believe in the power of technology to enhance accessibility and make information consumption more inclusive.</p>
+
+        <h3>Why Text-to-Speech Conversion?</h3>
+        <p>Text-to-Speech Conversion is more than just a tool; it's a solution to bridge the gap for individuals with visual impairments, those who prefer auditory learning, and anyone looking for a convenient way to consume content on the go.</p>
+
+        <h3>Key Features:</h3>
+        <ul>
+            <li>Convert text or URLs into speech effortlessly.</li>
+            <li>Customize speech settings to match your preferences.</li>
+            <li>Options to convert either the main content or the entire page for URLs.</li>
+        </ul>
+
+        <!-- You can add more sections or details about your team, technology, etc. -->
+
+    </section>
+
+    <footer>
+        <!-- Your footer content goes here -->
+        <p>&copy; 2023 Your Website. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
